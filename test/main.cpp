@@ -1,0 +1,6 @@
+﻿#include <cassert>
+
+void main()
+{
+
+}
