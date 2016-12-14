@@ -124,7 +124,8 @@ inline bool Cas2(volatile Node<T>** ptr, Node<T>* old1, uint32_t old2, Node<T>* 
     uint64_t compared = reinterpret_cast<uint32_t>(old1) | (static_cast<uint64_t>(old2) << 32);
     uint64_t exchange = reinterpret_cast<uint32_t>(new1) | (static_cast<uint64_t>(new2) << 32);
 
-    return __sync_bool_compare_and_swap(reinterpret_cast<uint64_t*>(ptr), compared, exchanged);
+    return __sync_bool_compare_and_swap(
+        reinterpret_cast<volatile uint64_t*>(ptr), compared, exchanged);
 }
 #endif
 
